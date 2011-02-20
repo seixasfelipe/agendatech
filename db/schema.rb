@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101220215755) do
+ActiveRecord::Schema.define(:version => 20110220000204) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -63,8 +63,9 @@ ActiveRecord::Schema.define(:version => 20101220215755) do
     t.datetime "logo_updated_at"
     t.string   "estado"
     t.datetime "data_termino"
-    t.integer  "grupo_id"
     t.string   "cached_slug"
+    t.integer  "grupo_id"
+    t.integer  "call_4_paperz_id"
   end
 
   add_index "eventos", ["cached_slug"], :name => "index_eventos_on_cached_slug", :unique => true
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20101220215755) do
     t.string   "image"
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
