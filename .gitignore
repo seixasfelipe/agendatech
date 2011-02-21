@@ -11,3 +11,4 @@ public/images/twimages
 .rvmrc
 .DS_Store
 public/images/twimages/*
+.idea
