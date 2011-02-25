@@ -23,7 +23,10 @@ module GadgetsHelper
 
   def extension gadget
     image = User.find(gadget.user_id).image
-    image.match(/(\w{3,4})$/).to_s
+    image_extension image
   end
-    
+
+  def image_extension image
+    image.match(/(\w{3,4})$/).to_s    
+  end
 end
