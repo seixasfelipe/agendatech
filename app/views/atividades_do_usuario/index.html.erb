@@ -1,4 +1,4 @@
-<%= link_to (image_tag link_da_imagem_do_twitter_para("#{@usuario.nickname}.#{image_extension @usuario.image}"), :size => "25x25"), "http://www.twitter.com/#{@usuario.nickname}" %><br/>
+<%= link_to (image_tag link_da_imagem_do_twitter_para("#{@usuario.nickname}.#{image_extension @usuario.image}"), :size => "25x25"), "http://www.twitter.com/#{@usuario.nickname}",:target => :blank %><br/>
 <% @usuario.eventos_que_vai_ou_foi.each do |evento| %>
     <%= evento.nome %> - <%= l evento.data,:format => :short %><br/>
 <% end %>
