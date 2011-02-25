@@ -1,4 +1,37 @@
-<%= link_to (image_tag link_da_imagem_do_twitter_para("#{@usuario.nickname}.#{image_extension @usuario.image}"), :size => "25x25"), "http://www.twitter.com/#{@usuario.nickname}",:target => :blank %><br/>
-<% @usuario.eventos_que_vai_ou_foi.each do |evento| %>
-    <%= evento.nome %> - <%= l evento.data,:format => :short %><br/>
-<% end %>
+
+
+
+<div id="userInfo" class="grayBox">
+            <div class="pic"><%= link_to (image_tag link_da_imagem_do_twitter_para("#{@usuario.nickname}.#{image_extension @usuario.image}")), "http://www.twitter.com/#{@usuario.nickname}",:target => :blank %></div>
+            <div class="data">
+              <h1><%= @usuario.nickname %></h1>
+              <!--h2>São Paulo, Brasil</h2-->
+              
+            
+              <div class="links">
+                <a target="_blank" rel="me" href="http://twitter.com/ellenchocolate"><img src="/img/twitterBox.png"></a>
+                <a target="_blank" rel="me" href="http://www.facebook.com/profile.php?id=100000327597248"><img src="/img/facebookBox.png"></a>
+              </div>
+              
+              <div class="separator"></div>
+              <!--ul class="translate">
+                <li style="width: 110px; padding-left: 8px;">
+                  DAYS OUT <strong style="left: 7px;" class="notranslate">65</strong>
+                </li>
+                <li style="width: 130px;">
+                  CHECK-INS<strong class="notranslate">292</strong>
+                  </li>
+                <li style="width: 100px; border-right: medium none;">
+                  THINGS DONE <strong class="notranslate">7</strong>
+                </li>
+              </ul-->
+            </div>
+          </div>
+          
+          Eventos que compareceu:
+          <br/><br/>
+          <% @usuario.eventos_que_vai_ou_foi.each do |evento| %>
+            <%= evento.nome %> - <%= l evento.data,:format => :short %><br/>
+          <% end %>
+          
+          
