@@ -1,7 +1,10 @@
 class MobileController < ApplicationController
+  
+  respond_to :json
+  
   def eventos
     @eventos = Evento.que_ainda_vao_rolar
-    render :json => @eventos
+    respond_with @eventos
   end
   
   def novo_evento
@@ -13,6 +16,9 @@ class MobileController < ApplicationController
 
     Evento.create :nome => nome, :descricao => descricao, :site => site, :estado => estado, :data => data, :aprovado => 0
 
-    redirect_to :action => 'eventos'
+    redirect_with :action => 'eventos'
   end
+
+
+  
 end

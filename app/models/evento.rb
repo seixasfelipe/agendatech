@@ -53,14 +53,15 @@ class Evento < ActiveRecord::Base
   
   extend Scopes
   
-  private
-
-  def termino_depois_do_inicio?
-    if errors[:data].size == 0 && errors[:data_termino].size == 0 && data_termino && data_termino < data
-      errors.add(:data_termino, 'O término deve vir após o inicio :)')
-    end
-  end
-  
+  def as_json(o=nil)
+    super :include => {
+            :gadgets => {
+              :include => {
+                :user => { :only => :nickname }
+              }
+            }
+          }
+  end  
 
   public
   
@@ -77,6 +78,12 @@ class Evento < ActiveRecord::Base
   end
 
   private
+
+  def termino_depois_do_inicio?
+    if errors[:data].size == 0 && errors[:data_termino].size == 0 && data_termino && data_termino < data
+      errors.add(:data_termino, 'O término deve vir após o inicio :)')
+    end
+  end
 
   def password_required?
     (authentications.empty? || !password.blank?) && (!persisted? || !password.nil? || !password_confirmation.nil?)

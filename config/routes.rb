@@ -30,6 +30,7 @@ Agendatech::Application.routes.draw do
   match 'calendario/eventos/:estado' => 'calendario#index', :as => :calendario_por_estado
   resources :grupos
   match 'colaboradores' => 'sobre#colaboradores', :as => :colaboradores
+  match 'mobile/eventos' => 'mobile#eventos', :format  => :json
   match 'contato' => 'notifier#index', :as => :contato
   match 'sobre' => 'sobre#index', :as => :sobre
   match 'calendario' => 'calendario#links', :as => :calendario_link
