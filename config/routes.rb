@@ -9,6 +9,8 @@ Agendatech::Application.routes.draw do
     resources :eventos, :only => [:index,:update] do
       member do
         get 'aprovar'
+        get 'desaprovar'
+        get 'copiar'
         get 'remover' 
       end
     end

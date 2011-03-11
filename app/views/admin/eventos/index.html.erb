@@ -18,6 +18,6 @@ Editar Eventos:
 <br/><br/>
 <% for evento in @eventos_editar %>
 
-	<%= evento.nome %> <%= link_to 'editar',:action => "editar", :id => evento %> <br/>
+	<%= evento.nome %> <%= link_to 'editar',:action => "editar", :id => evento %> | <%= link_to 'desaprovar',:action => "desaprovar", :id => evento %> | <%= link_to 'copiar',:action => "copiar", :id => evento %><br/>
 
 <% end %>

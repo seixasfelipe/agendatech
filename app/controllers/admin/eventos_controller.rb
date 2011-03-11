@@ -9,6 +9,13 @@ class Admin::EventosController < ApplicationController
   def editar
     @evento = Evento.find_by_cached_slug(params[:id])
   end
+
+  def copiar    
+    evento_cadastrado = Evento.find_by_cached_slug(params[:id])
+    @evento = Evento.new
+    @evento.attributes = evento_cadastrado.attributes
+    render 'eventos/new'
+  end
   
   def update
      @evento = Evento.find_by_cached_slug(params[:id])
@@ -23,6 +30,12 @@ class Admin::EventosController < ApplicationController
   def aprovar
     Evento.update(params[:id], :aprovado => true)
     flash[:notice] = "Evento aprovado."
+    redirect_to :action => 'index'
+  end
+
+  def desaprovar
+    Evento.update(params[:id], :aprovado => false)
+    flash[:notice] = "Evento desaprovado."
     redirect_to :action => 'index'
   end
 
