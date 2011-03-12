@@ -33,6 +33,7 @@ Agendatech::Application.routes.draw do
   resources :grupos
   match 'colaboradores' => 'sobre#colaboradores', :as => :colaboradores
   match 'mobile/eventos' => 'mobile#eventos', :format  => :json
+  match 'mobile/grupos' => 'mobile#grupos', :format  => :json  
   match 'contato' => 'notifier#index', :as => :contato
   match 'sobre' => 'sobre#index', :as => :sobre
   match 'calendario' => 'calendario#links', :as => :calendario_link

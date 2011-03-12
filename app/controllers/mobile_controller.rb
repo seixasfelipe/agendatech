@@ -6,6 +6,12 @@ class MobileController < ApplicationController
     @eventos = Evento.que_ainda_vao_rolar
     respond_with @eventos
   end
+
+  def grupos
+    @grupos = Grupo.all
+    respond_with @grupos
+  end
+
   
   def novo_evento
     nome =  params[:nome]
