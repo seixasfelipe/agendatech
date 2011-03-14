@@ -13,24 +13,28 @@
               </div>
               
               <div class="separator"></div>
-              <!--ul class="translate">
+              <ul class="translate">
                 <li style="width: 110px; padding-left: 8px;">
-                  DAYS OUT <strong style="left: 7px;" class="notranslate">65</strong>
+                  EVENTOS <strong style="left: 7px;" class="notranslate"><%= @comentarios.size %></strong>
                 </li>
                 <li style="width: 130px;">
-                  CHECK-INS<strong class="notranslate">292</strong>
+                  COMENTÁRIOS<strong class="notranslate"><%= @usuario.eventos_que_vai_ou_foi.size %></strong>
                   </li>
-                <li style="width: 100px; border-right: medium none;">
+                <!--li style="width: 100px; border-right: medium none;">
                   THINGS DONE <strong class="notranslate">7</strong>
-                </li>
-              </ul-->
+                </li-->
+              </ul>
             </div>
           </div>
           
           Eventos que compareceu:
           <br/><br/>
           <% @usuario.eventos_que_vai_ou_foi.each do |evento| %>
-            <%= evento.nome %> - <%= l evento.data,:format => :short %><br/>
+            <a href="<%= evento.nome %>"><%= evento.nome %> - <%= l evento.data,:format => :short %></a><br/>
           <% end %>
           
-          
+          <br/>
+          Comentarios:<br/>
+          <% @comentarios.each do |comentario| %>
+            <%= comentario.descricao %><br/>
+          <% end %>  

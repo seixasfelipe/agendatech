@@ -907,6 +907,7 @@ a.button{
     padding-right: 0;
     padding-top: 0;
     position: relative;
+	text-align: left;
 }
 
 #userInfo .data ul li strong {
@@ -929,4 +930,8 @@ a.button{
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
+}
+
+.grayBox .data {
+	float: none !important;
 }
