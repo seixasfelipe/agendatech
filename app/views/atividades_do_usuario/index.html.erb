@@ -43,11 +43,19 @@
 
 					<div class="atividades_box">
 						<div class="atividades_head">Comentários</div>
-			          <% @comentarios.each do |comentario| %>
-									<div class="atividades_list">
-										<%= image_tag 'quotes.png', :class => "quote" %>
-			            	<p><%= comentario.descricao %></p><br/>
-			            	<p><span><%= comentario.evento.nome %></span></p>
-									</div>
-			          <% end %>
+			          <% if @comentarios.empty? %>
+										<div class="atividades_list">
+											<%= image_tag 'quotes.png', :class => "quote" %>
+				            	<p>Nenhum comentário até o momento.</p><br/>
+				            	<p><span>agendatech</span></p>
+										</div>
+								<% else %>
+									<% @comentarios.each do |comentario| %>
+										<div class="atividades_list">
+											<%= image_tag 'quotes.png', :class => "quote" %>
+				            	<p><%= comentario.descricao %></p><br/>
+				            	<p><span><%= comentario.evento.nome %></span></p>
+										</div>
+				          <% end %>
+								<% end %>
           </div>
