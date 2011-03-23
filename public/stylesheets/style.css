@@ -658,7 +658,16 @@ a:link.menu_select, a:visited.menu_select  {
 .comentario_descricao{
   font-size: 12px;
 	margin-top: 10px;
+	-moz-border-radius:4px;
+  -webkit-border-radius:4px;	
+	background-color: #444444;
+	padding: 10px;
+	margin-bottom: 10px;
 }
+
+.comentario_descricao a {
+		color: #ffffff !important;
+	}
 
 .comentario_data{
   font-size: 10px;
@@ -1002,9 +1011,7 @@ img.quote{
 }
 
 .buble{
-  -moz-border-radius:4px;
-  -webkit-border-radius:4px;	
-	background-color: #444444;
-	padding: 10px;
-	color: #ffffff !important;
+	position: relative;
+	top: -20px;
+	left: 2px;
 }
