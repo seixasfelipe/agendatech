@@ -657,10 +657,12 @@ a:link.menu_select, a:visited.menu_select  {
 
 .comentario_descricao{
   font-size: 12px;
+	margin-top: 10px;
 }
 
 .comentario_data{
   font-size: 10px;
+	color: #cccccc;
 }
 
 .comentario{
@@ -997,4 +999,12 @@ img.quote{
 		padding: 4px;
 		float: left;
 		margin-right: 10px;
+}
+
+.buble{
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;	
+	background-color: #444444;
+	padding: 10px;
+	color: #ffffff !important;
 }

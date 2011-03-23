@@ -162,11 +162,12 @@
 
               <% for comentario in @ultimos_comentarios %>
                 <div>
-
-                  <%= image_tag user_pic_by(comentario) , :size => '25x25'%>
-                  <p class="comentario_descricao"><%= link_to comentario.descricao, evento_path(:ano => comentario.evento.data.year,:id=>comentario.evento) %></p>
-                  <p class="comentario_data"><%= comentario.created_at.strftime("Enviado em %d/%m/%Y %I:%M%p") %></p>
-
+                  
+                  <p class="comentario_descricao"><%= link_to comentario.descricao, evento_path(:ano => comentario.evento.data.year,:id=>comentario.evento), :class => 'buble' %></p>
+                  
+									
+									<%= image_tag user_pic_by(comentario) , :size => '25x25'%>
+									<p class="comentario_data"><%= comentario.created_at.strftime("Enviado em %d/%m/%Y %I:%M%p") %></p>
                 </div>
                 <br />
               <% end %>
