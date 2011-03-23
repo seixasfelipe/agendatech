@@ -108,6 +108,28 @@
 
           </div>
 
+          <div id="mes">
+            <div class="header">
+              <p>Últimos comentários</p>              
+            </div>
+            <div class="inner">
+
+              <% for comentario in @ultimos_comentarios %>
+                <div>
+                  
+                  <p class="comentario_descricao"><%= link_to comentario.descricao, evento_path(:ano => comentario.evento.data.year,:id=>comentario.evento) %></p>
+									<img src="/images/buble.gif" class="buble" />
+									
+									<%= image_tag user_pic_by(comentario) , :size => '25x25'%>
+									<p class="comentario_data"><%= comentario.created_at.strftime("Enviado em %d/%m/%Y %I:%M%p") %></p>
+                </div>
+                <br />
+              <% end %>
+
+
+            </div>
+          </div>
+
           <a href="http://www.twitter.com/agendatech" target="_blank">
           <div id="twitter_bg">
             <div class="tweet">
@@ -154,27 +176,7 @@
                   </div>
               </div>
 
-          <div id="mes">
-            <div class="header">
-              <p>Últimos comentários</p>              
-            </div>
-            <div class="inner">
 
-              <% for comentario in @ultimos_comentarios %>
-                <div>
-                  
-                  <p class="comentario_descricao"><%= link_to comentario.descricao, evento_path(:ano => comentario.evento.data.year,:id=>comentario.evento) %></p>
-									<img src="/images/buble.gif" class="buble" />
-									
-									<%= image_tag user_pic_by(comentario) , :size => '25x25'%>
-									<p class="comentario_data"><%= comentario.created_at.strftime("Enviado em %d/%m/%Y %I:%M%p") %></p>
-                </div>
-                <br />
-              <% end %>
-
-
-            </div>
-          </div>
 
           <div class="android">
             <%= image_tag "android.png" %>
