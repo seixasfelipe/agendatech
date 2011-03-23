@@ -48,6 +48,7 @@ blockquote, q {
 
 body{
   font-family: Helvetica,Verdana,Arial,sans-serif;
+	background: url('/images/bgSite.png') repeat-x;
 }
 
 
@@ -56,6 +57,7 @@ body{
   background: url('/images/bg_header.jpg');
   height: 75px;
   margin-bottom:30px;
+	border-bottom: 2px solid #cccccc;
 }
 
 #gray-bg {
@@ -76,7 +78,7 @@ body{
 #content .container{
   -moz-border-radius:10px 10px 0px 0px;
   -webkit-border-radius:10px 10px 0px 0px;	
-  background: repeat scroll 0 0 #f2f2f2;
+/*  background: repeat scroll 0 0 #f2f2f2;*/
   color:#4A4A47;
   width:960px;
 }
@@ -517,10 +519,13 @@ a:visited {
 }
 
 #banner{
-  width: 664px;
+  width: 940px;
   height: 158px;
   background-color: #4A4A47;
   margin-bottom: 10px;
+  margin-left: 12px;
+	background: url('/images/banner_qconsp.jpg');
+	margin-bottom: 20px;
 }
 
 .evento_destaque{
@@ -934,4 +939,62 @@ a.button{
 
 .grayBox .data {
 	float: none !important;
+}
+
+p.bignumber{
+	font-weight: bold;
+	color: #444444;
+	font-size: 32px;
+	padding: 5px;
+	margin-bottom: 5px;
+	text-align: right;
+}
+
+.atividades_box{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.atividades_head{
+	background-color: #0CBADF;
+	border-bottom-width: 1px solid #ccc;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	font-weight: bold;
+	color: #fff;
+	height: 16px;
+	padding: 8px 10px;
+}
+
+.atividades_list{
+	padding: 10px;
+	border: 1px solid #cccccc;
+	border-top: 0px;	
+}
+
+.atividades_list p, .atividades_list a p {
+	color: #444444;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.atividades_list p span, .atividades_list a p span{
+	color: #ccc;
+	font-size: 12px;
+}
+
+img.venue{
+	background-color: #f2f2f2;
+		border: 2px solid #444444;
+	  -moz-border-radius:4px;
+	  -webkit-border-radius:4px;	
+		padding: 4px;
+		float: left;
+		margin-right: 10px;
+}
+
+img.quote{
+		padding: 4px;
+		float: left;
+		margin-right: 10px;
 }

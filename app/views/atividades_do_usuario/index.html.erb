@@ -1,6 +1,3 @@
-
-
-
 <div id="userInfo" class="grayBox">
             <div class="pic"><%= link_to (image_tag link_da_imagem_do_twitter_para("#{@usuario.nickname}.#{image_extension @usuario.image}")), "http://www.twitter.com/#{@usuario.nickname}",:target => :blank %></div>
             <div class="data">
@@ -26,15 +23,31 @@
               </ul>
             </div>
           </div>
-          
-          Eventos que compareceu:
-          <br/><br/>
-          <% @usuario.eventos_que_vai_ou_foi.each do |evento| %>
-            <a href="<%= evento.nome %>"><%= evento.nome %> - <%= l evento.data,:format => :short %></a><br/>
-          <% end %>
-          
-          <br/>
-          Comentarios:<br/>
-          <% @comentarios.each do |comentario| %>
-            <%= comentario.descricao %><br/>
-          <% end %>  
+
+					<div class="atividades_box">
+						<div class="atividades_head">Eventos que compareceu</div>
+		          	<% @usuario.eventos_que_vai_ou_foi.each do |evento| %>
+									<div class="atividades_list">
+										
+										<% if evento.logo? %>
+									  	<%= image_tag evento.logo.url(:thumb), :size => "20x20", :class => "venue" %>
+									  <% else%>
+									  	<%= image_tag 'empty.gif', :size => "20x20", :class => "venue" %>
+									  <% end %>
+										
+				            <p><a href="<%= evento.nome %>"><%= evento.nome %></a></p>
+										<p><span><%= evento.data.strftime("%d/%m/%Y") %></span></p>
+									</div>
+		          	<% end %>
+          </div>
+
+					<div class="atividades_box">
+						<div class="atividades_head">Comentários</div>
+			          <% @comentarios.each do |comentario| %>
+									<div class="atividades_list">
+										<%= image_tag 'quotes.png', :class => "quote" %>
+			            	<p><%= comentario.descricao %></p><br/>
+			            	<p><span><%= comentario.evento.nome %></span></p>
+									</div>
+			          <% end %>
+          </div>

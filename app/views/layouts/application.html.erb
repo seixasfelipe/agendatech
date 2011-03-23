@@ -60,6 +60,15 @@
         <% if flash[:aguarde] %>
           <p class="notice"><%=flash[:aguarde]%></p>
         <% end  %>
+
+
+				<% if @eventos %>
+					<!-- <div id="banner">
+									
+									</div> -->
+				<% end %>
+				
+
         <div id="left" >
         <!--p class="breadcrumb"><% if @mes %>Eventos em <%= @mes %><% end %></p>
         <p class="breadcrumb"><% if @tag %>Eventos de <%= @tag	%><% end %></p-->
@@ -68,6 +77,10 @@
 
         </div>
         <div id="right" >
+
+					<!-- <p class="bignumber">
+											<span>101</span> eventos 
+										</p> -->
 
 
           <FORM>
