@@ -662,14 +662,10 @@ a:link.menu_select, a:visited.menu_select  {
 	margin-top: 10px;
 	-moz-border-radius:4px;
   -webkit-border-radius:4px;	
-	background-color: #444444;
+	background-color: #cccccc;
 	padding: 10px;
 	margin-bottom: 10px;
 }
-
-.comentario_descricao a {
-		color: #ffffff !important;
-	}
 
 .comentario_data{
   font-size: 10px;
@@ -1015,7 +1011,7 @@ img.quote{
 .buble{
 	position: relative;
 	top: -20px;
-	left: 2px;
+	left: 46px;
 }
 
 .banner_quems {
