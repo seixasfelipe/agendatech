@@ -1,7 +1,7 @@
 class RssController < ApplicationController
 
   	def feed
-			@eventos = Evento.all
+			@eventos = Evento.que_ainda_vao_rolar
 
 			respond_to do |format|
 				format.rss {render :layout => false}
