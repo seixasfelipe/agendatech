@@ -1,7 +1,15 @@
+class TipoEvento < EnumerateIt::Base
+     associate_values(
+       :conferencia   => 'Evento',
+       :curso  => 'Curso'
+     )
+end
+
 class Evento < ActiveRecord::Base
   has_many :comentarios
   has_many :gadgets, :order => 'id desc' 
   belongs_to :grupo
+  has_enumeration_for :tipo_evento, :with => TipoEvento, :create_helpers => true, :create_scopes => true  
 
   acts_as_taggable
   has_friendly_id :nome, :use_slug => true,:approximate_ascii => true

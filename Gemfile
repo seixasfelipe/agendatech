@@ -11,6 +11,7 @@ gem 'validates_timeliness', '~> 3.0.2'
 gem "omniauth"
 gem "aws-s3"
 gem "dalli"
+gem "enumerate_it"
 
 group :production do
 end
