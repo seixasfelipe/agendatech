@@ -69,8 +69,8 @@
 					</a>
 					<div class="banner_quems">
 						<p>Quem vai <br/> na <strong>QCon</strong>:</p>
-						<%= eu_vou Evento.find(143) %> <!--336-->
-		        <% Evento.find(143).me_da_gadgets.eu_vou.each do |gadget| %>
+						<%= eu_vou Evento.find(336) %> <!--336-->
+		        <% Evento.find(336).me_da_gadgets.eu_vou.each do |gadget| %>
 		          <div class="quem_vai_pic"> 
 		            <%= link_to  (image_tag link_da_imagem_do_twitter_para("#{user_name gadget}.#{extension gadget}"), :size => "25x25"), atividades_do_usuario_path(user_name gadget) %>
 		          </div>
