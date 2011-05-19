@@ -3,10 +3,11 @@ require 'spec_helper'
 describe Evento do
   
     before do
-       @evento1 = Evento.create :nome => "evento", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'BA',:aprovado => true,:tipo_evento => TipoEvento::CONFERENCIA
-       @evento2 = Evento.create :nome => "evento1", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'BA',:aprovado => true,:tipo_evento => TipoEvento::CONFERENCIA
-       @evento3 = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'SP',:aprovado => true,:tipo_evento => TipoEvento::CONFERENCIA
-       @evento_de_outro_ano = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => '10/10/2006', :estado => 'SP',:aprovado => true,:tipo_evento => TipoEvento::CONFERENCIA                                                             
+       @evento1 = Evento.create :nome => "evento", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'BA',:aprovado => true
+       @evento2 = Evento.create :nome => "evento1", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'BA',:aprovado => true
+       @evento3 = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'SP',:aprovado => true
+       @curso = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'SP',:aprovado => true,:tipo_evento => TipoEvento::CURSO       
+       @evento_de_outro_ano = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => '10/10/2006', :estado => 'SP',:aprovado => true                                                             
        Gadget.create :tipo => Gadget.tipos[:eu_vou], :evento_id => @evento1.id, :user_id => 1
        Gadget.create :tipo => 'teste1', :evento_id => @evento1.id, :user_id => 1
        Gadget.create :tipo => 'teste2', :evento_id => @evento1.id, :user_id => 1
@@ -60,8 +61,8 @@ describe Evento do
   end  
   
   describe "listagens dos eventos aprovados" do                
-      it "nao deveria listar nenhum fora de conferencia que ainda vao ocorrer" do
-          Evento.que_ainda_vao_rolar(TipoEvento::CURSO).length.should eq(0)
+      it "deveria listar os eventos que vao rolar por algum tipo diferente de conferencia" do
+          Evento.que_ainda_vao_rolar(TipoEvento::CURSO).length.should eq(1)
       end               
     
       it "que ainda vao ocorrer" do

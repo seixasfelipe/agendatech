@@ -24,6 +24,14 @@ class Evento < ActiveRecord::Base
   
   scope :para_o_ano, lambda {|ano| where("#{SQL.ano_do_evento} >= ?",ano)}
   
+  before_save :verifica_tipo
+  
+  private 
+    def verifica_tipo
+      self.tipo_evento = TipoEvento::CONFERENCIA unless self.tipo_evento
+    end
+  public
+  
       
   module Scopes
     
@@ -44,7 +52,7 @@ class Evento < ActiveRecord::Base
     end
     
     def por_estado(estado,ano = Time.now.year,tipo=TipoEvento::CONFERENCIA)
-      por_tipo(tipo).where("estado = ?",estado).aprovado.para_o_ano(Time.now.year).ordenado_por_data
+      por_tipo(tipo).where("estado = ?",estado).aprovado.para_o_ano(ano).ordenado_por_data
     end
     
     def por_mes(mes,ano = Time.now.year,tipo=TipoEvento::CONFERENCIA)

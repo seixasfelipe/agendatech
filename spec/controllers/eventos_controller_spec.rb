@@ -4,7 +4,8 @@ describe EventosController do
   before do
      @evento1 = Evento.create :nome => "evento", :descricao => "desc", :site => "http://www.example.com", :data => "10/09/2020", :estado => 'BA',:aprovado => true
      @evento2 = Evento.create :nome => "evento1", :descricao => "desc", :site => "http://www.example.com", :data => "10/10/2020", :estado => 'BA',:aprovado => true
-     @evento3 = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => "10/10/2020", :estado => 'SP',:aprovado => true                           
+     @evento3 = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => "10/10/2020", :estado => 'SP',:aprovado => true
+     @evento4 = Evento.create :nome => "evento2", :descricao => "desc", :site => "http://www.example.com", :data => "10/10/2020", :estado => 'SP',:aprovado => true,:tipo_evento => TipoEvento::CURSO                                                           
   end
   
   describe "get para a home" do
@@ -22,7 +23,12 @@ describe EventosController do
     it "listar todos que estao para acontecer em determinado estado" do
       get :index , {:estado => "São Paulo"}
       assigns[:eventos].length.should eq 1
-    end                                                
+    end                                      
+    
+    it "deveria listar todos os cursos que ainda estao para acontecer" do
+      get :cursos , {:ano => Time.now.year}
+      assigns[:eventos].length.should eq 1
+    end    
   end
   
   describe "get para show" do

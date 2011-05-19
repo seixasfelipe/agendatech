@@ -10,7 +10,12 @@ class EventosController < ApplicationController
       else
         @eventos = Evento.que_ainda_vao_rolar
       end
-    end
+    end    
+  end
+  
+  def cursos
+    @eventos = Evento.que_ainda_vao_rolar(TipoEvento::CURSO)
+    render :action => 'index'
   end
 
   def new
@@ -19,7 +24,6 @@ class EventosController < ApplicationController
 
   def create
     @evento = Evento.new(params[:evento])
-    @evento.tipo_evento = TipoEvento::CONFERENCIA
     @evento.aprovado = false
     unless @evento.data_termino?
       @evento.data_termino = @evento.data
