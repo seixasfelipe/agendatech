@@ -19,6 +19,7 @@ class EventosController < ApplicationController
 
   def create
     @evento = Evento.new(params[:evento])
+    @evento.tipo_evento = TipoEvento::CONFERENCIA
     @evento.aprovado = false
     unless @evento.data_termino?
       @evento.data_termino = @evento.data

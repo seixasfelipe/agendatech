@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20110518155505) do
     t.string   "cached_slug"
     t.integer  "grupo_id"
     t.integer  "call_4_paperz_id"
-    t.string   "tipo_evento",       :default => "conferencia"
+    t.string   "tipo_evento",       :default => "Evento"
   end
 
   add_index "eventos", ["cached_slug"], :name => "index_eventos_on_cached_slug", :unique => true

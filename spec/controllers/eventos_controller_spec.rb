@@ -37,6 +37,7 @@ describe EventosController do
     it "deveria salvar o evento com a data de termino igual a de inicio caso nao tenha sido passada a de termino" do
       post :create, :evento => {:nome => "evento", :descricao => "desc", :site => "http://www.example.com", :data => Date.today, :estado => 'BA'}
       assigns[:evento].aprovado.should be_false
+      assigns[:evento].tipo_evento.should eq TipoEvento::CONFERENCIA
       assigns[:evento].data_termino.to_date.should eq Date.today.to_date
       flash[:aguarde].should eq "Obrigado! Seu evento aparecerá na lista em instantes!"
       response.should redirect_to :action =>"index"
@@ -46,6 +47,7 @@ describe EventosController do
       data_termino = Date.today + 1.day
       post :create, :evento => {:nome => "evento", :descricao => "desc", :site => "http://www.example.com", :data => Date.today,:data_termino => data_termino ,:estado => 'BA'}
       assigns[:evento].aprovado.should be_false
+      assigns[:evento].tipo_evento.should eq TipoEvento::CONFERENCIA      
       assigns[:evento].data_termino.to_date.should eq data_termino
       flash[:aguarde].should eq "Obrigado! Seu evento aparecerá na lista em instantes!"
       response.should redirect_to :action =>"index"
@@ -56,7 +58,7 @@ describe EventosController do
      it "deveria adicionar um a mais pegando o usuario do twitter da pessoa logada" do
         usuario_logado = User.new(:nickname => "teste",:email => "teste@teste.com.br",:image => "http://a3.twimg.com/profile_images/1201901056/ic_launcher.png")
         controller.stub!(:current_user).and_return(usuario_logado)
-        post :comentar, :evento_nome => @evento1.nome,:comentario => {:twitter => "alberto_souza", :descricao => "desc", :evento_id => @evento1.id}       
+        post :comentar, :evento_nome => @evento1.cached_slug,:comentario => {:twitter => "alberto_souza", :descricao => "desc"}       
         assigns[:comentario].twitter.should eq usuario_logado.nickname
         assigns[:evento].should eq @evento1
         response.should redirect_to evento_path(:ano => @evento1.data.year,:id=>@evento1)

@@ -31,6 +31,11 @@
 						<%= f.collection_select :grupo_id, Grupo.aprovados, :id, :nome, options ={:prompt =>
 						"Evento sem grupo específico."} %>
 				</p>
+				<p>
+						<label for="grupo_id">Tipo do evento</label><br/>
+						<%=error_message_on :evento,:tipo_evento%>
+						<%= f.select(:tipo_evento, TipoEvento.to_a, {:include_blank => 'None'}) %>
+				</p>				
 
 	  		<p>
 	  		  <label for="email">Site</label><br />

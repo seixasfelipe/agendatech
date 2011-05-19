@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Grupo do
 
   describe "vai no evento" do
-    before(:all) do
+    before do
       @user = User.create :nickname => "teste",:email => "teste@teste.com.br",:image => "http://a3.twimg.com/profile_images/1201901056/ic_launcher.png"
       @evento1 = Evento.create :nome => "evento", :descricao => "desc", :site => "http://www.example.com", :data => "10/09/2020", :estado => 'BA',:aprovado => true
     end
