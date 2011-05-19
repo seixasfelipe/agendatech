@@ -1,10 +1,3 @@
-class TipoEvento < EnumerateIt::Base
-     associate_values(
-       :conferencia   => 'Evento',
-       :curso  => 'Curso'
-     )
-end
-
 class Evento < ActiveRecord::Base
   has_many :comentarios
   has_many :gadgets, :order => 'id desc' 
@@ -30,32 +23,37 @@ class Evento < ActiveRecord::Base
   scope :top_gadgets, includes(:gadgets)
   
   scope :para_o_ano, lambda {|ano| where("#{SQL.ano_do_evento} >= ?",ano)}
-    
+  
       
   module Scopes
     
-    def que_ainda_vao_rolar
-      nao_ocorrido.ordenado_por_data
+    def que_ainda_vao_rolar(tipo=TipoEvento::CONFERENCIA)
+      por_tipo(tipo).nao_ocorrido.ordenado_por_data
     end
     
-    def agrupado_por_estado(ano = Time.now.year)
-        group('estado').aprovado.para_o_ano(ano).order('estado asc').count
+    def agrupado_por_estado(ano = Time.now.year,tipo=TipoEvento::CONFERENCIA)
+      por_tipo(tipo).group('estado').aprovado.para_o_ano(ano).order('estado asc').count
     end
     
-    def agrupado_por_mes(ano = Time.now.year)
-      group("#{SQL.mes_do_evento}").aprovado.para_o_ano(ano).order("#{SQL.mes_do_evento} asc").count
+    def agrupado_por_mes(ano = Time.now.year,tipo=TipoEvento::CONFERENCIA)
+      por_tipo(tipo).group("#{SQL.mes_do_evento}").aprovado.para_o_ano(ano).order("#{SQL.mes_do_evento} asc").count
     end
     
-    def ultimos_twitados
-      select("distinct(twitter_hash)").aprovado.limit(3)      
+    def ultimos_twitados(tipo=TipoEvento::CONFERENCIA)
+      por_tipo(tipo).select("distinct(twitter_hash)").aprovado.limit(3)      
     end
     
-    def por_estado(estado,ano = Time.now.year)
-      where("estado = ?",estado).aprovado.para_o_ano(Time.now.year).ordenado_por_data
+    def por_estado(estado,ano = Time.now.year,tipo=TipoEvento::CONFERENCIA)
+      por_tipo(tipo).where("estado = ?",estado).aprovado.para_o_ano(Time.now.year).ordenado_por_data
     end
     
-    def por_mes(mes,ano = Time.now.year)
-      where("#{SQL.mes_do_evento} = ? ", mes).aprovado.para_o_ano(ano).ordenado_por_data
+    def por_mes(mes,ano = Time.now.year,tipo=TipoEvento::CONFERENCIA)
+      por_tipo(tipo).where("#{SQL.mes_do_evento} = ? ", mes).aprovado.para_o_ano(ano).ordenado_por_data
+    end
+    
+    private 
+    def por_tipo(tipo = TipoEvento::CONFERENCIA)
+      where("tipo_evento = ?",tipo.humanize)
     end
   end
   
