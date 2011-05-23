@@ -1,5 +1,6 @@
 class Admin::EventosController < ApplicationController
   before_filter :authenticate_admin!
+  uses_tiny_mce :only => [:editar]
 
   def index
     @eventos = Evento.all(:conditions=>{:aprovado=>false})
